@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-# Create the user with ssh acces
+# Create the user with ssh access
 useradd -d "/home/${SSH_USER}" -m -s "/bin/bash" "${SSH_USER}"
 mkdir -p /home/${SSH_USER}/.ssh/
 
