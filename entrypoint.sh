@@ -5,6 +5,7 @@ if ! grep ${SSH_USER} /etc/passwd ; then
 	# Create the user with ssh access
 	useradd -d "/home/${SSH_USER}" -m -s "/bin/bash" "${SSH_USER}"
 	mkdir -p /home/${SSH_USER}/.ssh/
+	chmod 700 /home/${SSH_USER}/.ssh
 
 	# Configure ssh_config
 	mkdir -p /var/run/sshd
@@ -15,6 +16,10 @@ if ! grep ${SSH_USER} /etc/passwd ; then
 	# Copy the authorized_keys
 	touch /home/${SSH_USER}/.ssh/authorized_keys
 	echo "$SSH_KEY" >> /home/${SSH_USER}/.ssh/authorized_keys
+	chmod 600 /home/${SSH_USER}/.ssh/authorized_keys
+	
+	# Change the owner of the ssh folder
+	chown -R ${SSH_USER}:${SSH_USER} /home/${SSH_USER}/.ssh
 fi
 
 exec "$@"
