@@ -8,3 +8,5 @@ Docker container for only openssh-server
 
 `SSH_KEY` The ssh-key allowed to login to the ssh server
 
+`SSH_DEPENDENCIES` To install the another apt-get dependencies
+
