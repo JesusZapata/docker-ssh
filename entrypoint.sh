@@ -2,6 +2,9 @@
 set -e
 
 if ! grep ${SSH_USER} /etc/passwd ; then
+    # Install dependencies
+    apt-get install -y ${SSH_DEPENDENCIES}
+
 	# Create the user with ssh access
 	useradd -d "/home/${SSH_USER}" -m -s "/bin/bash" "${SSH_USER}"
 	mkdir -p /home/${SSH_USER}/.ssh/
