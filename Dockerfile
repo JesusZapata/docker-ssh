@@ -15,3 +15,4 @@ ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
+
